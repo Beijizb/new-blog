@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{{ url_for('index') }}">Back to Home</a>
+<hr>
+<h2 class="title is-3">{{ post.title }}</h2>
+<p class="is-size-7 has-text-grey">{{ post.created.strftime('%Y-%m-%d %H:%M') }}</p>
+<div class="content">{{ post.html|safe }}</div>
+{% endblock %}

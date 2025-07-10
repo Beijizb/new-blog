@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{{ url_for('index') }}">Back to Home</a>
+<hr>
+<form method="post">
+  <div class="field">
+    <label class="label">Title</label>
+    <div class="control">
+      <input class="input" type="text" name="title" value="{{ post.title if post else '' }}" required>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Content (Markdown)</label>
+    <div class="control">
+      <textarea class="textarea" name="content" rows="10" required>{{ post.content if post else '' }}</textarea>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <button class="button is-link" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
