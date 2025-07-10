@@ -1,35 +1,35 @@
-# Simple Markdown Blog
+# Flask Markdown 博客
 
-This project is a minimal blog system written in Python using Flask.
-It supports writing posts in Markdown and renders them with a clean
-Bulma-based user interface.
+这是一个使用 Flask 构建的简易博客系统，支持 Markdown 撰写文章，并提供明亮/暗色主题切换。系统包含基本的文章管理、分类和标签功能，同时提供简单的后台登录。
 
-## Features
+## 功能
 
-- Create, edit, and view blog posts
-- Posts written in Markdown
-- SQLite database
-- Responsive, modern design using Bulma CSS
+- 创建、编辑和查看文章
+- Markdown 实时预览，支持代码高亮
+- 文章分类与标签
+- 简单的密码登录保护后台
+- 明亮和暗色主题切换
+- 自动生成 `sitemap.xml` 和 `rss.xml`
 
-## Setup
+## 安装与运行
 
-1. Create a virtual environment (optional but recommended):
+1. **创建虚拟环境（推荐）**
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
-2. Install dependencies:
+2. **安装依赖**
    ```bash
    pip install -r requirements.txt
    ```
-3. Run the application:
+3. **运行应用**
    ```bash
    python app.py
    ```
-   The blog will be available at `http://localhost:5000`.
+   默认情况下博客会运行在 `http://localhost:5000`。
 
-## Notes
+默认管理员密码可通过环境变量 `ADMIN_PASSWORD` 设置（默认为 `password`）。
 
-This is a simple demo application. It does not include authentication
-or advanced features, but serves as a foundation for a lightweight blog
-system that renders Markdown content with a pleasant aesthetic.
+## 备注
+
+此项目适合作为个人博客或学习 Flask 的示例，功能简单，可在此基础上继续扩展。

@@ -10,10 +10,26 @@
     </div>
   </div>
   <div class="field">
+    <label class="label">Category</label>
+    <div class="control">
+      <input class="input" type="text" name="category" value="{{ post.category if post else '' }}">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Tags (comma separated)</label>
+    <div class="control">
+      <input class="input" type="text" name="tags" value="{{ post.tags if post else '' }}">
+    </div>
+  </div>
+  <div class="field">
     <label class="label">Content (Markdown)</label>
     <div class="control">
-      <textarea class="textarea" name="content" rows="10" required>{{ post.content if post else '' }}</textarea>
+      <textarea class="textarea" id="md-input" name="content" rows="10" required>{{ post.content if post else '' }}</textarea>
     </div>
+  </div>
+  <div class="field">
+    <label class="label">Preview</label>
+    <div class="content box" id="preview"></div>
   </div>
   <div class="field">
     <div class="control">
@@ -21,4 +37,14 @@
     </div>
   </div>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const input = document.getElementById('md-input');
+  const preview = document.getElementById('preview');
+  function update() {
+    preview.innerHTML = marked.parse(input.value);
+  }
+  input.addEventListener('input', update);
+  update();
+</script>
 {% endblock %}

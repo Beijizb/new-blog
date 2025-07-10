@@ -3,6 +3,13 @@
 <a href="{{ url_for('index') }}">Back to Home</a>
 <hr>
 <h2 class="title is-3">{{ post.title }}</h2>
-<p class="is-size-7 has-text-grey">{{ post.created.strftime('%Y-%m-%d %H:%M') }}</p>
+<p class="is-size-7 has-text-grey">
+  {{ post.created.strftime('%Y-%m-%d %H:%M') }}
+  {% if post.category %}| {{ post.category }}{% endif %}
+  {% if post.tags %}| {{ post.tags }}{% endif %}
+</p>
+{% if session.get('logged_in') %}
+<p><a href="{{ url_for('edit', post_id=post.id) }}">Edit</a></p>
+{% endif %}
 <div class="content">{{ post.html|safe }}</div>
 {% endblock %}
