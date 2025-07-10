@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="button is-primary" href="{{ url_for('create') }}">New Post</a>
+<hr>
+{% for post in posts %}
+  <div class="box">
+    <h2 class="title is-4"><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+    <p class="is-size-7 has-text-grey">{{ post.created.strftime('%Y-%m-%d %H:%M') }}</p>
+    <div class="content">{{ post.html|safe }}</div>
+  </div>
+{% else %}
+  <p>No posts yet.</p>
+{% endfor %}
+{% endblock %}
