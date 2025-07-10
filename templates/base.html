@@ -6,13 +6,44 @@
   <title>{{ title }} - Markdown Blog</title>
   <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta name="description" content="A simple markdown blog">
 </head>
-<body>
+<body class="has-background-white">
   <section class="section">
     <div class="container">
-      <h1 class="title"><a href="{{ url_for('index') }}">Markdown Blog</a></h1>
+      <nav class="level mb-4">
+        <div class="level-left">
+          <div class="level-item">
+            <h1 class="title mb-0"><a href="{{ url_for('index') }}">Markdown Blog</a></h1>
+          </div>
+        </div>
+        <div class="level-right">
+          <div class="level-item">
+            <button id="theme-toggle" class="button is-small">Toggle Theme</button>
+          </div>
+          <div class="level-item">
+            {% if session.get('logged_in') %}
+              <a class="button is-light is-small" href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+              <a class="button is-light is-small" href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
       {% block content %}{% endblock %}
     </div>
   </section>
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      });
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      }
+    }
+  </script>
 </body>
 </html>
