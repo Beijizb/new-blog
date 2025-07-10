@@ -33,3 +33,7 @@
 ## 备注
 
 此项目适合作为个人博客或学习 Flask 的示例，功能简单，可在此基础上继续扩展。
+
+## Vue + PHP 示例
+
+目录 `php_backend` 与 `frontend` 提供了一个使用 Vue 结合 PHP 的简易示例，前端样式基于 [Sakura](https://github.com/mashirozx/Sakura) 主题。运行 PHP 服务器后访问 `php_backend/index.php` 即可看到效果。
